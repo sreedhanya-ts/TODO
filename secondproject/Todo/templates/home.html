@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+  <!-- Login Popup -->
+<div id="loginPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="hidePopup('loginPopup')">&times;</span>
+    <h2>Login</h2>
+    <input type="text" placeholder="Username"><br>
+    <input type="password" placeholder="Password"><br>
+    <button>Login</button>
+  </div>
+</div>
+
+<!-- Sign-Up Popup -->
+<div id="signupPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="hidePopup('signupPopup')">&times;</span>
+    <h2>Sign Up</h2>
+     <input type="file" name="image" ><br>
+    <input type="text" placeholder="First Name"><br>
+    <input type="text" placeholder="Last Name"><br>
+    <input type="email" placeholder="Email"><br>
+    <input type="tel" placeholder="Phone Number" maxlength="10"><br>
+    <input type="text" placeholder="Username"><br>
+    <input type="password" placeholder="Password" maxlength="8"><br>
+    <button>Register</button>
+  </div>
+</div>
+<div class="container">
+     <div class="nav-bar">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="">
+            <h2>TODO</h2>
+        </div>
+      <div class="items">
+        <h3>Home</h3>
+        <h3>About</h3>
+        <h3>Features</h3>
+        <h3>Task</h3>
+      </div>
+        <div class="right">
+           <button onclick="showPopup('loginPopup')">Login</button>
+           <button onclick="showPopup('signupPopup')">Sign Up</button>
+      </div>
+     </div>
+     <section class="hero">
+        <div class="card_right">
+           <div class="main_card">
+            <div class="result"><h2>Integration Tool</h2>
+           <p>Avg Response Time:</p>
+           <h3>365 s</h3>
+           </div>
+           <div class="icon"><h1><ion-icon name="speedometer"></ion-icon></h1></div>
+           </div>
+        <div class="hero-right">
+        <div class="card">
+            <h2>🧑🏻‍🤝‍🧑🏻 </h2>
+            <h3>1,273 <br>Total Customers</h3></div>
+        <div class="card"><h2>📁 </h2><h3>828 <br> Active Customers</h3></div>
+        <div class="card"><h2>💰 </h2><h3>$10,928 <br>Revenue </h3></div>
+        <div class="card"><h2>🆓 </h2><h3>$2.912 <br>Expense</h3></div>
+       </div>
+       </div>
+       <div class="left">
+       <div class="hero-left">
+        <h1>Turn To Dos 👷‍♀️into Done with⚡FlowUp</h1>
+        <p>Imagine a day where tasks are clear, deadlines are met,and your to-do list works for you,not against you.</p>
+       <button> <h6>Get Started<ion-icon name="arrow-forward-outline"></ion-icon></h6></button>
+       <button> <h6>Learn More<ion-icon name="arrow-forward-outline"></ion-icon></h6></button>
+       </div>
+       <div class="details">
+        <p>Trust by Teams</p>
+        <p>Saved Million Hours</p>
+        <p>User Satisfaction</p>
+       </div>
+       <div class="values">
+        <h3>500+</h3>
+        <h3>5M</h3>
+        <h3>90%</h3>
+       </div>
+       </div>
+     </section>
+     <section class="main_contents">
+      <div class="contents">
+        <button class="btns">Project progress</button>
+        <h1>Tools That Work for You </h1>
+        <h1>Not Against You</h1>
+        <p>Taskly makes managing tasks feel effortless and intuitive.</p>
+      </div>
+     </section>
+      <div class="features">
+        <div class="feat">
+          <h2><ion-icon name="logo-apple-ar"></ion-icon> </h2>
+          <h3>Organise</h3>
+          <h6>Average tasks by priority and <br>deadlines.</h6>
+          <p>Explore now<ion-icon name="arrow-forward-outline"></ion-icon></p>
+        </div>
+        <div class="feat">
+          <h2><ion-icon name="logo-apple-ar"></ion-icon> </h2>
+          <h3>Collaborate</h3>
+          <h6>Work togather effortlessly in real- <br>time.</h6>
+          <p>Explore now<ion-icon name="arrow-forward-outline"></ion-icon></p>
+        </div>
+        <div class="feat">
+          <h2>🆓 </h2>
+          <h3>Automate</h3>
+          <h6>Streamline tasks with smart <br>automations.</h6>
+          <p>Explore now<ion-icon name="arrow-forward-outline"></ion-icon></p>
+        </div>
+         <div class="feat">
+          <h2>🆓 </h2>
+          <h3>Automate</h3>
+          <h6>Streamline tasks with smart <br>automations.</h6>
+          <p>Explore now<ion-icon name="arrow-forward-outline"></ion-icon></p>
+        </div>
+      </div>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+</body>
+</html>
