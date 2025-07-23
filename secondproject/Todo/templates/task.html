@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+  <!-- Popup Edit Box -->
+<div id="editPopup" class="popup-edit">
+  <div class="popup-editcontent">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>Edit Task</h2>
+    <form action="">
+      <input type="text" name="Task" placeholder="Enter the Task">
+      <input type="date">
+      <div class="button-section">
+        <button type="submit">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+  <div class="container">
+        <div class="nav-bar">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="">
+            <h2>TODO</h2>
+        </div>
+      <div class="items">
+        <a href="{% url 'home' %}"></a><h3>Home</h3></a>
+        <h3>About</h3>
+        <h3>Features</h3>
+        <h3>Task</h3>
+      </div>
+        <div class="right">
+           <button>LogOut</button>
+           <!-- <button onclick="showPopup('signupPopup')">Sign Up</button> -->
+      </div>
+     </div>
+      <div class="todo">
+    <h1>My ToDo List</h1>
+    <h5>Welcome To Todo</h5>
+    </div>
+    <section class="form-section">
+      <div class="details_form">
+    <form action="">
+        <input type="text" name="Task" placeholder="Enter the Task">
+        <input type="date">
+        <div class="button_section">
+        <button type="submit" style="display: inline-block;">AddTodo</button>
+        </div>
+    </form>
+    </div>
+    </section>
+    <div class="todo-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Sl No</th>
+            <th>Date</th>
+            <th>ToDo</th>
+            <th>ToDo Date</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="action">
+              <button class="checkbox"><ion-icon name="checkmark-outline"></ion-icon></button>
+              <button class="delete"><ion-icon name="close-outline"></ion-icon></button>
+              <button class="edit" onclick="showPopup()"><ion-icon name="create"></ion-icon></button>
+              <button class="delete"><ion-icon name="trash-outline"></ion-icon></button>
+
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+ <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="{% static 'js/todo.js' %}"></script>
+</body>
+</html>
