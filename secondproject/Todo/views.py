@@ -7,3 +7,7 @@ from django.urls import reverse
 # Create your views here.
 def homepage(request):
     return render(request,"home.html")
+
+
+def task_view(request):
+    return render(request, 'task.html')
