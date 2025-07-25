@@ -5,23 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task</title>
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task.css' %}">
 </head>
 <body>
   <!-- Popup Edit Box -->
-<div id="editPopup" class="popup-edit">
-  <div class="popup-editcontent">
-    <span class="close-btn" onclick="closePopup()">&times;</span>
-    <h2>Edit Task</h2>
-    <form action="">
-      <input type="text" name="Task" placeholder="Enter the Task">
-      <input type="date">
-      <div class="button-section">
-        <button type="submit">Update</button>
-      </div>
-    </form>
-  </div>
-</div>
+
   <div class="container">
         <div class="nav-bar">
         <div class="logo">
@@ -29,7 +17,7 @@
             <h2>TODO</h2>
         </div>
       <div class="items">
-        <a href="{% url 'home' %}"></a><h3>Home</h3></a>
+        <a href="{% url 'homepage' %}"><h3>Home</h3></a>
         <h3>About</h3>
         <h3>Features</h3>
         <h3>Task</h3>
@@ -45,9 +33,10 @@
     </div>
     <section class="form-section">
       <div class="details_form">
-    <form action="">
-        <input type="text" name="Task" placeholder="Enter the Task">
-        <input type="date">
+    <form  method="post" action="{%url 'addtodo'%}" >
+      {% csrf_token %}
+        <input type="text" name="task" placeholder="Enter the Task" required>
+        <input type="date" name="date" required>
         <div class="button_section">
         <button type="submit" style="display: inline-block;">AddTodo</button>
         </div>
@@ -61,22 +50,23 @@
             <th>Sl No</th>
             <th>Date</th>
             <th>ToDo</th>
-            <th>ToDo Date</th>
+            <th>deadline</th>
             <th>Action</th>
           </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          {% for i in content %}
+          <tr> 
+            <td>{{forloop.counter}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.date}}</td>
             <td class="action">
               <button class="checkbox"><ion-icon name="checkmark-outline"></ion-icon></button>
               <button class="delete"><ion-icon name="close-outline"></ion-icon></button>
-              <button class="edit" onclick="showPopup()"><ion-icon name="create"></ion-icon></button>
+              <a href="{% url 'edit'%}"><button class="edit"><ion-icon name="create"></ion-icon></button></a>
               <button class="delete"><ion-icon name="trash-outline"></ion-icon></button>
-
             </td>
           </tr>
+          {% endfor %}
         </thead>
       </table>
     </div>
