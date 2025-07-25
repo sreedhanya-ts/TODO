@@ -12,10 +12,13 @@
 <div id="loginPopup" class="popup">
   <div class="popup-content">
     <span class="close" onclick="hidePopup('loginPopup')">&times;</span>
-    <h2>Login</h2>
-    <input type="text" placeholder="Username"><br>
-    <input type="password" placeholder="Password"><br>
+    <form method="POST" action="{% url 'login'%}">
+        {% csrf_token %}
+      <h2>Login</h2>
+    <input type="text" placeholder="Username" name="username"><br>
+    <input type="password" placeholder="Password" name="password"><br>
     <button>Login</button>
+    </form>
   </div>
 </div>
 
@@ -23,17 +26,21 @@
 <div id="signupPopup" class="popup">
   <div class="popup-content">
     <span class="close" onclick="hidePopup('signupPopup')">&times;</span>
-    <h2>Sign Up</h2>
-     <input type="file" name="image" ><br>
-    <input type="text" placeholder="First Name"><br>
-    <input type="text" placeholder="Last Name"><br>
-    <input type="email" placeholder="Email"><br>
-    <input type="tel" placeholder="Phone Number" maxlength="10"><br>
-    <input type="text" placeholder="Username"><br>
-    <input type="password" placeholder="Password" maxlength="8"><br>
+    <form  method="POST" action="{% url 'signup' %}" enctype="multipart/form-data">
+         <h2>Sign Up</h2>
+        {% csrf_token %}
+        <input type="file" name="image" ><br>
+        <input type="text" name="firstname" placeholder="First Name" required><br>
+        <input type="text" name="lastname" placeholder="Last Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="tel" name="phone" placeholder="Phone Number" maxlength="10"required><br>
+    <input type="text" name="username" placeholder="Username" required><br>
+    <input type="password" name="password" placeholder="Password" maxlength="8" required><br>
     <button>Register</button>
+    </form>
   </div>
 </div>
+
 <div class="container">
      <div class="nav-bar">
         <div class="logo">
@@ -44,12 +51,15 @@
         <h3>Home</h3>
         <h3>About</h3>
         <h3>Features</h3>
-        <a href="{% url 'task' %}"><h3>Task</h3></a>
-
+        <a href="{% url 'addtodo' %}"><h3>Task</h3></a>
       </div>
         <div class="right">
-           <button onclick="showPopup('loginPopup')">Login</button>
-           <button onclick="showPopup('signupPopup')">Sign Up</button>
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'logout' %}"><button id="btn">Logout</button></a>
+          {% else %}
+          <button onclick="showPopup('loginPopup')">Login</button>
+          <button onclick="showPopup('signupPopup')">Sign Up</button>
+          {% endif %}
       </div>
      </div>
      <section class="hero">
