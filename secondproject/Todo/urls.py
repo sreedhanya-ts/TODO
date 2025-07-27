@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/',views.userlogout,name="logout"),
     path('edit/', views.todoedit, name="edit"),
     path('addtodo/',views.addtodo,name="addtodo"),
-
+    path('todocomplete/<int:pk>',views.todocomplete,name="todocomplete"),
+    path('todoclose/<int:pk>',views.todoclose,name="todoclose"),
 ]
