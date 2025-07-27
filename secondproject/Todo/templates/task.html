@@ -60,8 +60,8 @@
             <td>{{i.title}}</td>
             <td>{{i.date}}</td>
             <td class="action">
-              <button class="checkbox"><ion-icon name="checkmark-outline"></ion-icon></button>
-              <button class="delete"><ion-icon name="close-outline"></ion-icon></button>
+              <a href="{% url 'todocomplete' pk=i.pk %}"><button class="checkbox"><ion-icon name="checkmark-outline"></ion-icon></button></a>
+              <a href="{% url 'todoclose' pk=i.pk %}"><button class="delete"><ion-icon name="close-outline"></ion-icon></button></a>
               <a href="{% url 'edit'%}"><button class="edit"><ion-icon name="create"></ion-icon></button></a>
               <button class="delete"><ion-icon name="trash-outline"></ion-icon></button>
             </td>
