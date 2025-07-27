@@ -55,6 +55,17 @@ def addtodo(request):
        return HttpResponseRedirect(reverse("addtodo"))
     return render(request,"task.html",{'content':todo})
     
- 
+def todocomplete(request,pk):
+     complete=Todo.objects.filter(pk=pk).first()
+     complete.complete=True
+     complete.save()
+     return HttpResponseRedirect(reverse("addtodo"))
+    
+def todoclose(request,pk):
+     close=Todo.objects.filter(pk=pk).first()
+     close.complete=False
+     close.save()
+     return HttpResponseRedirect(reverse("addtodo"))
+
 
  
