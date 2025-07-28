@@ -35,8 +35,8 @@
     <form method="POST" action="{% url 'login'%}">
         {% csrf_token %}
       <h2>Login</h2>
-    <input type="text" placeholder="Username" name="username"><br>
-    <input type="password" placeholder="Password" name="password"><br>
+    <input type="text" placeholder="Username" name="username" required><br>
+    <input type="password" placeholder="Password" name="password" required><br>
     <button>Login</button>
     </form>
   </div>
@@ -70,8 +70,10 @@
       <div class="items">
         <h3>Home</h3>
         <h3>About</h3>
-        <h3>Features</h3>
+        <h3> Features</h3>
+        {% if request.user.is_authenticated %}
         <a href="{% url 'addtodo' %}"><h3>Task</h3></a>
+        {%endif%}
       </div>
         <div class="right">
           {% if request.user.is_authenticated %}
@@ -115,7 +117,11 @@
           <span class="radio-icon"><ion-icon name="radio-outline"></ion-icon></span><br>
           into Done with<span class="flash"><ion-icon name="flash"></ion-icon></span>FlowUp</h2>
         <p>Imagine a day where tasks are clear, deadlines are met,and your to-do list works for you,not against you.</p>
+        {% if request.user.is_authenticated %}
        <a href="{% url 'addtodo' %}"><button> <h6>Get Started<ion-icon name="arrow-forward-outline"></ion-icon></h6></button></a>
+        {%else%}
+        <button onclick="showPopup('loginPopup')"> <h6>Get Started<ion-icon name="arrow-forward-outline"></ion-icon></h6></button>
+        {% endif %}
        <button> <h6>Learn More<ion-icon name="arrow-forward-outline"></ion-icon></h6></button>
        </div>
        <div class="details">
@@ -138,7 +144,7 @@
         <p>Taskly makes managing tasks feel effortless and intuitive.</p>
       </div>
      </section>
-      <div class="features">
+      <div class="features" id="features">
         <div class="feat">
           <h2><ion-icon name="logo-apple-ar"></ion-icon> </h2>
           <h3>Organise</h3>
@@ -188,7 +194,7 @@
           <p>Explore now<ion-icon name="arrow-forward-outline"></ion-icon></p>
         </div>
       </div>
-     <section class="about">
+     <section class="about" id="about">
     <div class="todo-img">
       <img src="{% static 'images/todo.png' %}" alt="">
     </div>

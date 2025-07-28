@@ -14,11 +14,18 @@
     <h2>Edit Task</h2>
     <form method="post" action="{% url 'edittodo' pk=todo.pk %}" enctype="multipart/form-data">
       {% csrf_token %}
-      <input type="text" name="Task" placeholder="Enter the Task" value="{{todo.title}}">
-      <input type="date" name="date" value="{{todo.deadline|date:'Y-m-d'}}" >
+      <input type="text" name="Task" placeholder="Enter the Task" value="{{todo.title}}" required>
+      <input type="date" name="date"  id="dateField"  value="{{todo.deadline|date:'Y-m-d'}}" required>
         <button type="submit">Update</button>
     </form>
   </div>
+
+  <script>
+    const dateField = document.getElementById("dateField");
+    const today = new Date().toISOString().split("T")[0]; 
+    dateField.setAttribute("min", today);
+</script>
+
 <!-- </div> -->
 </body>
 </html>
