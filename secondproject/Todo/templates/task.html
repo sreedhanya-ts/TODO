@@ -58,9 +58,15 @@
           {% for i in content %}
           <tr class="todo-row"> 
             <td>{{forloop.counter}}</td>
+            {% if i.complete %}
+            <td style="text-decoration-line: line-through;">{{i.date}}</td>
+            <td style="text-decoration-line: line-through;">{{i.title}}</td>
+            <td style="text-decoration-line: line-through;">{{i.deadline}}</td>
+            {% else %}
             <td>{{i.date}}</td>
             <td>{{i.title}}</td>
             <td>{{i.deadline}}</td>
+            {% endif %}
             <td class="action">
               <a href="{% url 'todocomplete' pk=i.pk %}"><button class="checkbox"><ion-icon name="checkmark-done-sharp"></ion-icon></button></a>
               <a href="{% url 'todoclose' pk=i.pk %}"><button class="delete"><ion-icon name="close-outline"></ion-icon></button></a>
