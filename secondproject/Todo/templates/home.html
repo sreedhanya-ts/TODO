@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
+<!-- Popup Edit Box -->
+<div id="editPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="hidePopup('editPopup')">&times;</span>
+    {% if profile %}
+    <form  method="POST" action="{% url 'editprofile' pk=profile.pk %}" enctype="multipart/form-data">
+         <h2>Edit Profile</h2>
+        {% csrf_token %}
+        <input type="file" name="image"><br>
+        <input type="text" name="firstname" placeholder="First Name" value="{{profile.firstname}}"><br>
+        <input type="text" name="lastname" placeholder="Last Name" value="{{profile.lastname}}"><br>
+        <input type="email" name="email" placeholder="Email" value="{{profile.email}}"><br>
+        <input type="tel" name="phone" placeholder="Phone Number" maxlength="10" value="{{profile.phone}}"><br>
+    <button>Update</button>
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+
   <!-- Login Popup -->
 <div id="loginPopup" class="popup">
   <div class="popup-content">
@@ -55,6 +75,15 @@
       </div>
         <div class="right">
           {% if request.user.is_authenticated %}
+          <div class="profile-container">
+            {% if profile and profile.image %}
+            <div class="user_icon" onclick="showPopup('editPopup')">
+            <h4><img src="{{profile.image.url}}" alt="Profile Pic" class="profile-pic">{{profile.firstname}}</h4>
+            </div>
+            {%else%}
+            <h4><img src="{%static 'images/default-user.png'%}" alt="" class="profile-pic">{{request.user}}</h4>
+            {%endif%}
+          </div>
           <a href="{% url 'logout' %}"><button id="btn">Logout</button></a>
           {% else %}
           <button onclick="showPopup('loginPopup')">Login</button>
@@ -86,7 +115,7 @@
           <span class="radio-icon"><ion-icon name="radio-outline"></ion-icon></span><br>
           into Done with<span class="flash"><ion-icon name="flash"></ion-icon></span>FlowUp</h2>
         <p>Imagine a day where tasks are clear, deadlines are met,and your to-do list works for you,not against you.</p>
-       <button> <h6>Get Started<ion-icon name="arrow-forward-outline"></ion-icon></h6></button>
+       <a href="{% url 'addtodo' %}"><button> <h6>Get Started<ion-icon name="arrow-forward-outline"></ion-icon></h6></button></a>
        <button> <h6>Learn More<ion-icon name="arrow-forward-outline"></ion-icon></h6></button>
        </div>
        <div class="details">
