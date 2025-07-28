@@ -6,7 +6,11 @@ from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
 # Create your views here.
 def homepage(request):
-    return render(request,"home.html")
+    try:
+        profile = Profile.objects.filter(user=request.user).first()
+    except:
+        profile = None
+    return render(request, "home.html", {"profile": profile})
 
 
 # def task(request):
@@ -66,6 +70,37 @@ def todoclose(request,pk):
      close.complete=False
      close.save()
      return HttpResponseRedirect(reverse("addtodo"))
+
+def deletetodo(request,pk):
+   todo=Todo.objects.filter(pk=pk).first()
+#    print(todo)
+   todo.delete()
+   return HttpResponseRedirect(reverse("addtodo"))
+
+def edittodo(request,pk):
+     todo=Todo.objects.filter(pk=pk).first()
+    # print(todo)
+     if request.method=="POST":
+        todo.title=request.POST.get("Task")
+        todo.deadline=request.POST.get("date")
+        todo.save()
+        return HttpResponseRedirect(reverse("addtodo"))
+     return render(request,"edit.html",{"todo":todo})
+
+def editprofile(request,pk):
+    print("edit profile")
+    profile = Profile.objects.filter(pk=pk).first()
+    if request.method=="POST":
+       if request.FILES.get("image"):
+        profile.image=request.FILES.get("image")
+       profile.firstname=request.POST.get("firstname")
+       profile.lastname=request.POST.get("lastname")
+       profile.email=request.POST.get("email")
+       profile.phone=request.POST.get("phone")
+       profile.save()
+
+    return HttpResponseRedirect(reverse('homepage'))
+
 
 
  

@@ -17,3 +17,4 @@
       }
     });
   }
+  // Close popup when escape key is pressed

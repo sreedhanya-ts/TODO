@@ -10,11 +10,12 @@
 <body>
 <!-- <div id="editPopup" class="popup-edit"> -->
   <div class="popup-editcontent">
-    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <a href="{%url 'addtodo'%}"><span class="close-btn">&times;</span></a>
     <h2>Edit Task</h2>
-    <form action="">
-      <input type="text" name="Task" placeholder="Enter the Task">
-      <input type="date">
+    <form method="post" action="{% url 'edittodo' pk=todo.pk %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="text" name="Task" placeholder="Enter the Task" value="{{todo.title}}">
+      <input type="date" name="date" value="{{todo.deadline|date:'Y-m-d'}}" >
         <button type="submit">Update</button>
     </form>
   </div>

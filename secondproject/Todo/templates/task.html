@@ -23,7 +23,7 @@
         <h3>Task</h3>
       </div>
         <div class="right">
-           <button>LogOut</button>
+           <a href="{% url 'logout' %}"><button>LogOut</button></a>
            <!-- <button onclick="showPopup('signupPopup')">Sign Up</button> -->
       </div>
      </div>
@@ -43,6 +43,8 @@
     </form>
     </div>
     </section>
+    
+    {% if request.user.is_authenticated %}
     <div class="todo-table">
       <table>
         <thead>
@@ -54,24 +56,28 @@
             <th>Action</th>
           </tr>
           {% for i in content %}
-          <tr> 
+          <tr class="todo-row"> 
             <td>{{forloop.counter}}</td>
             <td>{{i.date}}</td>
             <td>{{i.title}}</td>
-            <td>{{i.date}}</td>
+            <td>{{i.deadline}}</td>
             <td class="action">
-              <a href="{% url 'todocomplete' pk=i.pk %}"><button class="checkbox"><ion-icon name="checkmark-outline"></ion-icon></button></a>
+              <a href="{% url 'todocomplete' pk=i.pk %}"><button class="checkbox"><ion-icon name="checkmark-done-sharp"></ion-icon></button></a>
               <a href="{% url 'todoclose' pk=i.pk %}"><button class="delete"><ion-icon name="close-outline"></ion-icon></button></a>
-              <a href="{% url 'edit'%}"><button class="edit"><ion-icon name="create"></ion-icon></button></a>
-              <button class="delete"><ion-icon name="trash-outline"></ion-icon></button>
+              <a href="{% url 'edittodo' pk=i.pk %}"><button class="edit"><ion-icon name="create"></ion-icon></button></a>
+              <a href="{% url 'deletetodo' pk=i.pk %}"><button class="delete"><ion-icon name="trash-outline"></ion-icon></button></a>
             </td>
           </tr>
           {% endfor %}
         </thead>
       </table>
     </div>
+    {% endif%}
   </div>
- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+ <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
