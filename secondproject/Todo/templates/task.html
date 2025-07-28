@@ -36,7 +36,7 @@
     <form  method="post" action="{%url 'addtodo'%}" >
       {% csrf_token %}
         <input type="text" name="task" placeholder="Enter the Task" required>
-        <input type="date" name="date" required>
+        <input type="date" name="date"  id="dateField" required>
         <div class="button_section">
         <button type="submit" style="display: inline-block;">AddTodo</button>
         </div>
@@ -68,8 +68,13 @@
             <td>{{i.deadline}}</td>
             {% endif %}
             <td class="action">
-              <a href="{% url 'todocomplete' pk=i.pk %}"><button class="checkbox"><ion-icon name="checkmark-done-sharp"></ion-icon></button></a>
+              
+              {% if i.complete %}
               <a href="{% url 'todoclose' pk=i.pk %}"><button class="delete"><ion-icon name="close-outline"></ion-icon></button></a>
+              {% else %}
+              <a href="{% url 'todocomplete' pk=i.pk %}"><button class="checkbox"><ion-icon name="checkmark-done-sharp"></ion-icon></button></a>
+              {% endif %}
+
               <a href="{% url 'edittodo' pk=i.pk %}"><button class="edit"><ion-icon name="create"></ion-icon></button></a>
               <a href="{% url 'deletetodo' pk=i.pk %}"><button class="delete"><ion-icon name="trash-outline"></ion-icon></button></a>
             </td>
@@ -94,6 +99,15 @@
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+<script>
+    const dateField = document.getElementById("dateField");
+    const today = new Date().toISOString().split("T")[0]; 
+    dateField.setAttribute("min", today);
+</script>
+
+
   <script src="{% static 'js/todo.js' %}"></script>
 </body>
 </html>

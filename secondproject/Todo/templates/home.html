@@ -70,7 +70,7 @@
       <div class="items">
         <h3>Home</h3>
         <h3>About</h3>
-        <h3>Features</h3>
+        <h3> Features</h3>
         {% if request.user.is_authenticated %}
         <a href="{% url 'addtodo' %}"><h3>Task</h3></a>
         {%endif%}
@@ -144,7 +144,7 @@
         <p>Taskly makes managing tasks feel effortless and intuitive.</p>
       </div>
      </section>
-      <div class="features">
+      <div class="features" id="features">
         <div class="feat">
           <h2><ion-icon name="logo-apple-ar"></ion-icon> </h2>
           <h3>Organise</h3>
@@ -194,7 +194,7 @@
           <p>Explore now<ion-icon name="arrow-forward-outline"></ion-icon></p>
         </div>
       </div>
-     <section class="about">
+     <section class="about" id="about">
     <div class="todo-img">
       <img src="{% static 'images/todo.png' %}" alt="">
     </div>
