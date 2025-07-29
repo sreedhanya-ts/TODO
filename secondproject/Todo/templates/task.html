@@ -38,14 +38,14 @@
         <input type="text" name="task" placeholder="Enter the Task" required>
         <input type="date" name="date"  id="dateField" required>
         <div class="button_section">
-        <button type="submit" style="display: inline-block;">AddTodo</button>
+       <button type="submit" style="display: inline-block;">AddTodo</button>
         </div>
     </form>
     </div>
     </section>
     
     {% if request.user.is_authenticated %}
-    <div class="todo-table">
+    <div class="todo-table" id="table">
       <table>
         <thead>
           <tr>
