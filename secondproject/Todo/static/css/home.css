@@ -231,9 +231,11 @@ button:hover {
 }
 
 .card{
+  /* display: flex; */
     background: #54176e35;
     padding: 20px;
     width: 100%;
+    height: fit-content;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     text-align: center;
@@ -247,6 +249,9 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    ion-icon{
+        font-size: 30px;
+    }
 }
 .card:hover {
     transform: translateY(-10px);
@@ -512,7 +517,7 @@ button:hover {
 
 .about {
   background-color:#6d1d8372;
-  padding: 60px 20px;
+  padding: 30px 20px;
   text-align: center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -521,7 +526,7 @@ button:hover {
 
 .about-container{
   gap: 20px;
-  padding-top: 30%;
+  padding-top: 20%;
   h1{
   font-size: 36px;
   margin-bottom: 20px;
